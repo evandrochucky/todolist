@@ -33,10 +33,13 @@ public class TodoService {
                 Sort.by("nome").ascending());
         return todoRepository.findAll();
     }
-//    public List<Todo> update(Todo todo){
-//        todoRepository.save(id, todo);
-//        return list();
-//    }
+
+    public Todo findTodo(Long id){
+        // Busca o registro existente
+        Todo existing = todoRepository.findById(id)
+                .orElseThrow(() -> new TodoNotFoundException("Todo não encontrado"));
+        return existing;
+    }
 
     public Todo update(Long id, Todo todo) {
         // Busca o registro existente

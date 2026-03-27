@@ -8,7 +8,7 @@ import com.example.jas.todolist.service.TodoService;
 import java.util.List;
 
 @RestController
-@RequestMapping("/todos")
+@RequestMapping("/tasks")
 public class TodoController {
     @Autowired
     private TodoService todoService;
@@ -20,10 +20,13 @@ public class TodoController {
     List<Todo> list(Todo todo){
         return todoService.list();
     }
+
+    @GetMapping("{id}")
+    Todo findTodo(@PathVariable("id") Long id){
+        return todoService.findTodo(id);
+    }
+
     @PutMapping("{id}")
-//    List<Todo> update(@PathVariable("id") Long id, @RequestBody Todo todo){
-//        return todoService.update(id, todo);
-//    }
     Todo update(@PathVariable("id") Long id, @RequestBody Todo todo){
         return todoService.update(id, todo);
     }
