@@ -35,6 +35,22 @@ public class todoTeste {
         assertNotNull(todo.getData());
 
     }
+    @Test
+    @DisplayName("Deve validar se falta algum campo no preenchimento da tabela")
+    void testValidarCamposTodo(){
+        todo.setNome("Estudar Java 1");
+        todo.setDescricao("Estudo da linguagem de programação Java");
+        todo.setRealizado(false);
+        todo.setPrioridade(1);
+        todo.setData(LocalDateTime.now());
 
+        assertNotNull(todo);
 
+        assertEquals("Estudar Java 1", todo.getNome());
+        assertEquals("Estudo da linguagem de programação Java", todo.getDescricao());
+        assertFalse(todo.isRealizado());
+        assertEquals(1,todo.getPrioridade());
+        assertNotNull(todo.getData());
+
+    }
 }
